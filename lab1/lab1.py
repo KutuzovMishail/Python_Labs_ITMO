@@ -49,7 +49,5 @@ for i in range(1, len(tegs)):
         print(tegs[i])
 d_colum_popular = ['Кол-во выдач', 'Название']
 df_popular = file1[d_colum_popular]
-# the_best = [[0, 0]]*20
-# print(the_best)
 df_popular_sort = df_popular.sort_values(by='Кол-во выдач')
 print(df_popular_sort.tail(20))
