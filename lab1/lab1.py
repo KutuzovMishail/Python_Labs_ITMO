@@ -24,15 +24,11 @@ print(price_df['Название'].unique())
 dc = ['Автор', 'Название', 'Дата поступления']
 df3 = file[dc]
 count1 = 0
-doc = open('links', 'w')
-for i, row in df3.iterrows():
-    fl = random.randrange(0, 2)
-    if fl == 1:
-        m = (count1, row[0], row[1], '-', row[2][6:11])
-        doc.write(str(m))
-        count1 += 1
-        if count1 == 20:
-            break
+doc = open('links.txt', 'w')
+template = '{count} {author}.{name} - {year}\n'
+for i, row in df3.sample(20).iterrows():
+    doc.write(template.format(count=count1, author=row[0], name=row[1], year=row[2][6:11]))
+    count1 += 1
 
 
 file1 = pd.read_csv('books1.csv', encoding="windows-1251", delimiter=";")
